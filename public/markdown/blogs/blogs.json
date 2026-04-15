@@ -1,0 +1,46 @@
+[
+  {
+    "title": "bfs典题",
+    "file": "bfs典题.md"
+  },
+  {
+    "title": "dfs好题",
+    "file": "dfs好题.md"
+  },
+  {
+    "title": "python算法基础",
+    "file": "python算法基础.md"
+  },
+  {
+    "title": "stl小题",
+    "file": "stl小题.md"
+  },
+  {
+    "title": "二分典题",
+    "file": "二分典题.md"
+  },
+  {
+    "title": "前缀和典题",
+    "file": "前缀和典题.md"
+  },
+  {
+    "title": "图论好题",
+    "file": "图论好题.md"
+  },
+  {
+    "title": "字符串好题",
+    "file": "字符串好题.md"
+  },
+  {
+    "title": "排列好题",
+    "file": "排列好题.md"
+  },
+  {
+    "title": "李白打酒三种解法",
+    "file": "李白打酒三种解法.md"
+  },
+  {
+    "title": "算法模板",
+    "file": "算法模板.md"
+  }
+]
