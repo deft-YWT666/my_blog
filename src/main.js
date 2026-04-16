@@ -22,11 +22,12 @@ const routes = [
     { path: '/awards', component: Awards },
     { path: '/blogs', component: BlogList },
     { path: '/blogs/:title', component: BlogPost },
-    { path: '/contact', component: Contact }
+    { path: '/contact', component: Contact },
+    { path: '/:pathMatch(.*)*', redirect: '/' }
 ];
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory('/my_blog/'),
   routes
 });
 
