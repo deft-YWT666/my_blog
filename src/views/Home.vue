@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="center-content">
-      <img src="/证件照.jpg" alt="头像" class="avatar" />
+      <img :src="`${baseUrl}证件照.jpg`" alt="头像" class="avatar" />
       <h1 class="name">姚伟涛</h1>
       <p class="intro">一个热爱技术的计算机相关专业大三学生</p>
       <div class="button-group">
@@ -16,6 +16,10 @@
     </div>
   </div>
 </template>
+
+<script setup>
+const baseUrl = import.meta.env.BASE_URL || '/';
+</script>
 
 <style scoped>
 .home {

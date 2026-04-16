@@ -80,18 +80,17 @@ onMounted(() => {
   }))
 
   // 文艺时刻
-  const musicMods = import.meta.glob('../assets/music/*.{jpg,jpeg,png,gif,webp,bmp,mp4,webm,mov,aac,mp3,wav}', { eager: true })
+  const musicMods = import.meta.glob('../assets/music/*.{jpg,jpeg,png,gif,webp,bmp,mp4,webm,mov,mp3,m4a}', { eager: true })
   Object.entries(musicMods).forEach(([path, mod]) => {
     const src = mod.default
     const filename = path.split('/').pop()
     if (/\.(mp4|webm|mov)$/i.test(path)) {
       musicVideos.value.push(src)
-    } else if (/\.(aac|mp3|wav)$/i.test(path)) {
+    } else if (/\.(mp3|m4a)$/i.test(path)) {
       const name = filename
         .replace(/\(1\)/g, '')
-        .replace(/\.aac$/, '')
         .replace(/\.mp3$/, '')
-        .replace(/\.wav$/, '')
+        .replace(/\.m4a$/, '')
       musicAudios.value.push({ src, name })
     } else {
       musicImages.value.push(src)

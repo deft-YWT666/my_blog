@@ -32,7 +32,8 @@ const error = ref('')
 
 onMounted(async () => {
   try {
-    const res = await fetch('/markdown/blogs/blogs.json')
+    const base = import.meta.env.BASE_URL || '/';
+    const res = await fetch(`${base}markdown/blogs/blogs.json`)
     if (!res.ok) throw new Error('加载博客列表失败')
     blogs.value = await res.json()
   } catch (e) {

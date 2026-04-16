@@ -14,7 +14,8 @@ marked.setOptions({
 
 export async function loadMarkdown(path) {
   try {
-    const response = await fetch(`/markdown${path}`);
+    const base = import.meta.env.BASE_URL || '/';
+    const response = await fetch(`${base}markdown${path}`);
     if (!response.ok) throw new Error('Failed to load markdown file');
     const text = await response.text();
 
