@@ -6,6 +6,7 @@ import { createApp } from 'vue';
 import Home from './views/Home.vue';
 import About from './views/About.vue';
 import Contact from './views/Contact.vue';
+import Undergraduate from './views/Undergraduate.vue';
 import Research from './views/Posts.vue';
 import Projects from './views/Projects.vue';
 import Awards from './views/Awards.vue';
@@ -15,6 +16,7 @@ import BlogPost from './views/BlogPost.vue';
 const routes = [
     { path: '/', component: Home },
     { path: '/about', component: About },
+    { path: '/undergraduate', component: Undergraduate },
     { path: '/research', component: Research },
     { path: '/projects', component: Projects },
     { path: '/awards', component: Awards },

@@ -4,9 +4,7 @@
     <nav class="nav">
       <router-link to="/">首页</router-link>
       <router-link to="/about">关于我</router-link>
-      <router-link to="/research">科研经历</router-link>
-      <router-link to="/projects">项目经历</router-link>
-      <router-link to="/awards">竞赛荣誉</router-link>
+      <router-link to="/undergraduate">本科四年</router-link>
       <router-link to="/blogs">我的博客</router-link>
       <router-link to="/contact">联系我</router-link>
     </nav>
@@ -32,7 +30,7 @@
 
 .nav a {
   color: white;
-  margin-left: 20px;
+  margin-left: 24px;
   text-decoration: none;
   font-size: 0.9rem;
   transition: color 0.3s ease;
@@ -54,8 +52,8 @@
     gap: 12px;
   }
   .nav a {
-    margin-left: 8px;
-    margin-right: 8px;
+    margin-left: 12px;
+    margin-right: 12px;
     font-size: 0.8rem;
   }
 }
