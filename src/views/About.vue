@@ -48,7 +48,9 @@
         <div v-if="musicAudios.length" class="audio-list">
           <div v-for="(item, idx) in musicAudios" :key="idx" class="audio-item">
             <span class="audio-title">{{ item.name }}</span>
-            <audio :src="item.src" controls></audio>
+            <button class="play-btn" @click="toggleAudio(idx)">
+              {{ playingIndex === idx ? '⏸ 暂停' : '▶ 播放' }}
+            </button>
           </div>
         </div>
 
@@ -66,6 +68,27 @@ const friendsFiles = ref([])
 const musicImages = ref([])
 const musicVideos = ref([])
 const musicAudios = ref([])
+const playingIndex = ref(-1)
+let currentAudio = null
+
+const toggleAudio = (idx) => {
+  if (playingIndex.value === idx) {
+    currentAudio.pause()
+    playingIndex.value = -1
+    currentAudio = null
+  } else {
+    if (currentAudio) {
+      currentAudio.pause()
+    }
+    currentAudio = new Audio(musicAudios.value[idx].src)
+    currentAudio.play().catch(() => {})
+    playingIndex.value = idx
+    currentAudio.onended = () => {
+      playingIndex.value = -1
+      currentAudio = null
+    }
+  }
+}
 
 onMounted(() => {
   // 生活照
@@ -209,9 +232,21 @@ onMounted(() => {
   font-size: 0.95rem;
 }
 
-.audio-item audio {
-  flex: 1;
-  min-width: 220px;
+.play-btn {
+  background-color: rgba(66, 185, 131, 0.15);
+  color: #42b983;
+  border: 1px solid #42b983;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.play-btn:hover {
+  background-color: #42b983;
+  color: #000;
 }
 
 @media (max-width: 600px) {
