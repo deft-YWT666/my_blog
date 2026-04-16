@@ -27,7 +27,7 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory('/my_blog/'),
+  history: createWebHistory('/'),
   routes
 });
 
