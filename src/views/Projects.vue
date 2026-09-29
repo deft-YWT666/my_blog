@@ -109,10 +109,9 @@ import { projects } from '../data/experience.js'
 
 .innovation {
   margin-top: 12px;
-  padding: 14px;
-  background-color: rgba(66, 185, 131, 0.08);
-  border-radius: 8px;
-  border-left: 3px solid #42b983;
+  color: #ccc;
+  font-size: 0.95rem;
+  line-height: 1.7;
 }
 
 .innovation ul {

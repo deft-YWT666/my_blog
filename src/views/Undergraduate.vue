@@ -279,11 +279,10 @@ import { projects, awards } from '../data/experience.js'
 }
 
 .innovation {
-  margin-top: 10px;
-  padding: 12px;
-  background-color: rgba(66, 185, 131, 0.08);
-  border-radius: 8px;
-  border-left: 3px solid #42b983;
+  margin-top: 12px;
+  color: #ccc;
+  font-size: 0.9rem;
+  line-height: 1.7;
 }
 
 .innovation ul {
