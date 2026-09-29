@@ -6,52 +6,23 @@
     </header>
 
     <section class="awards-section">
-      <div class="award-card">
+      <div v-for="award in awards" :key="award.title" class="award-card">
         <div class="award-info">
-          <h3>第十六届全国大学生数学竞赛</h3>
+          <h3>{{ award.title }}</h3>
           <p class="level national">国家级</p>
         </div>
         <div class="award-result">
-          <span class="rank">一等奖</span>
-          <span class="date">2024.12</span>
-        </div>
-      </div>
-
-      <div class="award-card">
-        <div class="award-info">
-          <h3>第七届百度码蹄杯全国大学生程序设计大赛</h3>
-          <p class="level national">国家级</p>
-        </div>
-        <div class="award-result">
-          <span class="rank">铜奖</span>
-          <span class="date">2025.08</span>
-        </div>
-      </div>
-
-      <div class="award-card">
-        <div class="award-info">
-          <h3>第十六届蓝桥杯全国软件和信息技术专业人才大赛</h3>
-          <p class="level national">国家级</p>
-        </div>
-        <div class="award-result">
-          <span class="rank">三等奖</span>
-          <span class="date">2025.06</span>
-        </div>
-      </div>
-
-      <div class="award-card">
-        <div class="award-info">
-          <h3>第三届辽宁省大学生中医药大健康产业创新创业大赛</h3>
-          <p class="level provincial">省级</p>
-        </div>
-        <div class="award-result">
-          <span class="rank">一等奖</span>
-          <span class="date">2024.12</span>
+          <span class="rank">{{ award.rank }}</span>
+          <span class="date">{{ award.date }}</span>
         </div>
       </div>
     </section>
   </div>
 </template>
+
+<script setup>
+import { awards } from '../data/experience.js'
+</script>
 
 <style scoped>
 .awards-page {

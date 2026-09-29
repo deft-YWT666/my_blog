@@ -78,19 +78,18 @@
       </header>
 
       <div class="projects-section">
-        <div class="project-card">
+        <div v-for="project in projects" :key="project.title" class="project-card">
           <div class="project-header">
-            <h3>基于 LLM 构建的 Arxiv 中文搜索引擎</h3>
-            <span class="time">2025.05 – 2025.08</span>
+            <h3>{{ project.title }}</h3>
+            <span class="time">{{ project.time }}</span>
           </div>
           <div class="project-body">
-            <p><strong>项目背景：</strong>针对科研入门者及英文能力较弱群体的论文检索痛点，设计并构建一款 Arxiv 中文搜索引擎。通过 LLM 技术，将 Arxiv 论文转化为包含核心概要、算法流程图解、实验数据对比、发布机构背景等中文结构化内容，降低英文论文的检索与理解门槛。</p>
-            <p><strong>核心工作：</strong>使用 Universal Self-Consistency、CoT、Refine Prompt 等技术构建高质量英文论文总结数据集；基于 LoRA 微调 7B 基础语言模型，并在 SFT 基础上使用 DPO 进行偏好对齐；通过定制化 Prompt 对总结内容分级评分。</p>
+            <p><strong>项目背景：</strong>{{ project.background }}</p>
+            <p v-if="project.work"><strong>核心工作：</strong>{{ project.work }}</p>
             <div class="innovation">
-              <strong>方法创新：</strong>
+              <strong>{{ project.detailsTitle }}</strong>
               <ul>
-                <li><strong>Query 改写优化：</strong>使用 CoT 和动态 few-shot prompt 分析用户 Query，构建高质量改写数据集并微调 0.5B 模型，降低服务成本。</li>
-                <li><strong>检索相关性优化：</strong>通过大模型生产多场景用户 Query，结合 ES 引擎构建 &lt;Query, Doc&gt; 对；使用大模型构造正负样本集完成 Embedding 模型与 Reranker 模型的联合微调。</li>
+                <li v-for="detail in project.details" :key="detail.label"><strong>{{ detail.label }}</strong>{{ detail.text }}</li>
               </ul>
             </div>
           </div>
@@ -106,53 +105,24 @@
       </header>
 
       <div class="awards-section">
-        <div class="award-card">
+        <div v-for="award in awards" :key="award.title" class="award-card">
           <div class="award-info">
-            <h3>第十六届全国大学生数学竞赛</h3>
+            <h3>{{ award.title }}</h3>
             <p class="level national">国家级</p>
           </div>
           <div class="award-result">
-            <span class="rank">一等奖</span>
-            <span class="date">2024.12</span>
-          </div>
-        </div>
-
-        <div class="award-card">
-          <div class="award-info">
-            <h3>第七届百度码蹄杯全国大学生程序设计大赛</h3>
-            <p class="level national">国家级</p>
-          </div>
-          <div class="award-result">
-            <span class="rank">铜奖</span>
-            <span class="date">2025.08</span>
-          </div>
-        </div>
-
-        <div class="award-card">
-          <div class="award-info">
-            <h3>第十六届蓝桥杯全国软件和信息技术专业人才大赛</h3>
-            <p class="level national">国家级</p>
-          </div>
-          <div class="award-result">
-            <span class="rank">三等奖</span>
-            <span class="date">2025.06</span>
-          </div>
-        </div>
-
-        <div class="award-card">
-          <div class="award-info">
-            <h3>第三届辽宁省大学生中医药大健康产业创新创业大赛</h3>
-            <p class="level provincial">省级</p>
-          </div>
-          <div class="award-result">
-            <span class="rank">一等奖</span>
-            <span class="date">2024.12</span>
+            <span class="rank">{{ award.rank }}</span>
+            <span class="date">{{ award.date }}</span>
           </div>
         </div>
       </div>
     </section>
   </div>
 </template>
+
+<script setup>
+import { projects, awards } from '../data/experience.js'
+</script>
 
 <style scoped>
 .undergraduate-page {

@@ -8,7 +8,7 @@
       <div class="contact-card">
         <p><span class="icon">📱</span> <strong>电话：</strong> 18915610140</p>
         <p><span class="icon">✉️</span> <strong>邮箱：</strong> 18915610140@163.com</p>
-        <p><span class="icon">🎓</span> <strong>学校：</strong> 辽宁中医药大学 · 信息工程学院</p>
+        <p><span class="icon">🎓</span> <strong>学校：</strong> 苏州大学 · 计算机科学与技术学院</p>
       </div>
 
       <div class="contact-note">

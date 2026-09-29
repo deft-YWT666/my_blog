@@ -3,7 +3,7 @@
     <div class="center-content">
       <img :src="`${baseUrl}证件照.jpg`" alt="头像" class="avatar" />
       <h1 class="name">姚伟涛</h1>
-      <p class="intro">一个热爱技术的计算机相关专业大三学生</p>
+      <p class="intro">一个热爱技术的软件工程专业学生</p>
       <div class="button-group">
         <router-link to="/about" class="btn">关于我</router-link>
         <router-link to="/contact" class="btn">联系我</router-link>
