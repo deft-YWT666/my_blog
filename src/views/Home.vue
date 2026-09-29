@@ -9,6 +9,7 @@
         <p class="intro">一个热爱技术的软件工程专业学生</p>
         <div class="button-group">
           <router-link to="/about" class="btn btn-primary">关于我</router-link>
+          <router-link to="/undergraduate" class="btn">本科四年</router-link>
           <router-link to="/contact" class="btn">联系我</router-link>
           <router-link to="/blogs" class="btn">我的博客</router-link>
         </div>
@@ -135,7 +136,7 @@ import avatar from '../assets/avatar.jpg'
   .portrait { width: min(54vw, 230px); padding: 7px; justify-self: center; border-radius: 24px; }
   .avatar { border-radius: 17px; }
   .name { margin-bottom: 16px; font-size: 2.7rem; }
-  .button-group { justify-content: center; margin: 28px 0; gap: 10px; }
+  .button-group { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 28px auto; gap: 10px; max-width: 360px; }
   .btn { padding: 11px 18px; }
   .quick-info { justify-content: center; gap: 10px 20px; padding-top: 20px; }
 }

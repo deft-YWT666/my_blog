@@ -34,6 +34,7 @@
       <!-- 我的文艺时刻 -->
       <article class="card">
         <h2>我的文艺时刻</h2>
+        <p class="audio-tip">音频可能加载较慢, 请耐心等待</p>
         
         <!-- 图片 -->
         <div v-if="musicImages.length" class="media-grid">
@@ -49,12 +50,7 @@
 
         <!-- 音频 -->
         <div v-if="musicAudios.length" class="audio-list">
-          <div v-for="(item, idx) in musicAudios" :key="idx" class="audio-item">
-            <span class="audio-title">{{ item.name }}</span>
-            <button class="play-btn" @click="toggleAudio(idx)">
-              {{ playingIndex === idx ? '⏸ 暂停' : '▶ 播放' }}
-            </button>
-          </div>
+          <AudioPlayer v-for="item in musicAudios" :key="item.src" :src="item.src" :name="item.name" @play="handleAudioPlay" />
         </div>
 
         <p v-if="!musicImages.length && !musicVideos.length && !musicAudios.length" class="empty-tip">暂无内容，期待更新~</p>
@@ -76,13 +72,13 @@
 
 <script setup>
 import { computed, nextTick, ref, onMounted, onBeforeUnmount } from 'vue'
+import AudioPlayer from '../components/AudioPlayer.vue'
 
 const ywtFiles = ref([])
 const friendsFiles = ref([])
 const musicImages = ref([])
 const musicVideos = ref([])
 const musicAudios = ref([])
-const playingIndex = ref(-1)
 let currentAudio = null
 
 const friendImages = computed(() => friendsFiles.value.filter(item => item.type === 'image').map(item => item.src))
@@ -122,23 +118,9 @@ onBeforeUnmount(() => {
   currentAudio?.pause()
 })
 
-const toggleAudio = (idx) => {
-  if (playingIndex.value === idx) {
-    currentAudio.pause()
-    playingIndex.value = -1
-    currentAudio = null
-  } else {
-    if (currentAudio) {
-      currentAudio.pause()
-    }
-    currentAudio = new Audio(musicAudios.value[idx].src)
-    currentAudio.play().catch(() => {})
-    playingIndex.value = idx
-    currentAudio.onended = () => {
-      playingIndex.value = -1
-      currentAudio = null
-    }
-  }
+const handleAudioPlay = (audio) => {
+  if (currentAudio && currentAudio !== audio) currentAudio.pause()
+  currentAudio = audio
 }
 
 onMounted(() => {
@@ -317,38 +299,7 @@ onMounted(() => {
   gap: 14px;
 }
 
-.audio-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  background-color: rgba(255, 255, 255, 0.03);
-  padding: 12px 16px;
-  border-radius: 8px;
-  flex-wrap: wrap;
-}
-
-.audio-title {
-  color: #eee;
-  font-size: 0.95rem;
-}
-
-.play-btn {
-  background-color: rgba(66, 185, 131, 0.15);
-  color: #42b983;
-  border: 1px solid #42b983;
-  padding: 8px 18px;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  white-space: nowrap;
-}
-
-.play-btn:hover {
-  background-color: #42b983;
-  color: #000;
-}
+.audio-tip { margin: -4px 0 20px; color: #aab4ad; font-size: 0.9rem; line-height: 1.6; }
 
 @media (max-width: 600px) {
   .photo-viewer { padding: 64px 12px; }
@@ -358,10 +309,6 @@ onMounted(() => {
   .media-grid img,
   .media-grid video {
     height: 210px;
-  }
-  .audio-item {
-    flex-direction: column;
-    align-items: flex-start;
   }
 }
 </style>
