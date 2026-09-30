@@ -5,6 +5,13 @@
       <div class="scene-glow scene-glow-violet"></div>
       <div class="scene-grid"></div>
       <div class="scene-stars"></div>
+      <div class="scene-waves">
+        <div v-for="layer in 3" :key="layer" class="wave-layer" :class="`wave-layer-${layer}`">
+          <svg viewBox="0 0 2400 180" preserveAspectRatio="none" focusable="false">
+            <path d="M0 110 C200 65 400 155 600 110 C800 65 1000 155 1200 110 C1400 65 1600 155 1800 110 C2000 65 2200 155 2400 110 L2400 180 H0 Z" fill="currentColor" />
+          </svg>
+        </div>
+      </div>
     </div>
     <Header />
     <div v-if="showBack" class="back-bar">
@@ -14,7 +21,7 @@
     <div class="container">
       <!-- 路由匹配到的组件将渲染在这里 -->
       <router-view v-slot="{ Component }">
-        <Transition name="page" mode="out-in">
+        <Transition name="page" mode="out-in" appear>
           <component :is="Component" :key="route.path" class="main-content" />
         </Transition>
       </router-view>

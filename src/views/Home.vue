@@ -8,7 +8,7 @@
         <h1 id="home-name" class="name">姚伟涛</h1>
         <p class="intro">一个热爱技术的软件工程专业学生</p>
         <div class="button-group">
-          <router-link to="/about" class="btn btn-primary">关于我</router-link>
+          <router-link to="/about" class="btn">关于我</router-link>
           <router-link to="/undergraduate" class="btn">本科四年</router-link>
           <router-link to="/contact" class="btn">联系我</router-link>
           <router-link to="/blogs" class="btn">我的博客</router-link>
@@ -112,9 +112,7 @@ import avatar from '../assets/avatar.jpg'
   transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
 }
 
-.btn-primary { background: linear-gradient(120deg, #2378a8, #6c56b2); border-color: #8bbce66b; color: #fff; font-weight: 600; box-shadow: 0 6px 24px #418acd26; }
 .btn:hover { border-color: #9ddfff; background: #253854; transform: translateY(-3px); box-shadow: 0 8px 26px #468ac226; }
-.btn-primary:hover { background: linear-gradient(120deg, #3293c6, #856acf); }
 .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 
 .quick-info {
