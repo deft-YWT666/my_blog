@@ -1,6 +1,6 @@
 <template>
   <footer class="footer">
-    <p>© 2026 姚伟涛 · 邮箱: 18915610140@163.com · 电话: 18915610140</p>
+    <p>© 2026 姚伟涛 · 一个热爱技术的软件工程专业学生</p>
   </footer>
 </template>
 

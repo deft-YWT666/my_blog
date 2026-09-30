@@ -150,7 +150,4 @@ import avatar from '../assets/avatar.jpg'
   .quick-info { justify-content: center; gap: 10px 20px; padding-top: 20px; }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .btn { transition: none; }
-}
 </style>

@@ -1,7 +1,10 @@
 <template>
   <header class="header">
     <div class="header-inner">
-      <router-link to="/" class="logo"><span class="logo-name">tao</span>的个人博客</router-link>
+      <div class="brand-row">
+        <router-link to="/" class="logo"><span class="logo-name">tao</span>的个人博客</router-link>
+        <button class="motion-toggle" :aria-pressed="motionEnabled" aria-label="网站动画" @click="toggleMotion">动画{{ motionEnabled ? '开' : '关' }}</button>
+      </div>
       <nav class="nav" aria-label="主导航">
         <router-link to="/">首页</router-link>
         <router-link to="/about">关于我</router-link>
@@ -15,7 +18,17 @@
 
 <script setup>
 import { useRoute } from 'vue-router'
+import { ref } from 'vue'
 const route = useRoute()
+const motionEnabled = ref(true)
+try { motionEnabled.value = localStorage.getItem('tao-site-motion') !== 'off' } catch {}
+document.documentElement.dataset.motion = motionEnabled.value ? 'on' : 'off'
+
+const toggleMotion = () => {
+  motionEnabled.value = !motionEnabled.value
+  document.documentElement.dataset.motion = motionEnabled.value ? 'on' : 'off'
+  try { localStorage.setItem('tao-site-motion', motionEnabled.value ? 'on' : 'off') } catch {}
+}
 </script>
 
 <style scoped>
@@ -47,6 +60,9 @@ const route = useRoute()
   text-decoration: none;
 }
 .logo-name { color: var(--accent); font-size: 1.5rem; font-weight: 700; letter-spacing: -0.04em; margin-right: 3px; }
+.brand-row { display: flex; align-items: center; gap: 18px; }
+.motion-toggle { padding: 6px 10px; border: 1px solid var(--border); border-radius: 8px; background: transparent; color: var(--muted); font-size: 0.75rem; white-space: nowrap; cursor: pointer; }
+.motion-toggle:hover { border-color: var(--accent); color: var(--accent); }
 .nav {
   display: flex;
   gap: 4px;
@@ -77,5 +93,4 @@ const route = useRoute()
   .nav { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); box-sizing: border-box; width: 100%; max-width: 500px; gap: 2px; padding: 4px; }
   .nav a { padding: 8px 4px; font-size: clamp(0.72rem, 2.8vw, 0.875rem); }
 }
-@media (prefers-reduced-motion: reduce) { .nav a { transition: none; } }
 </style>
