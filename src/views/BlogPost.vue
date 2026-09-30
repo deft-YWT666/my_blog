@@ -2,6 +2,7 @@
   <div class="blog-post-page">
     <div v-if="loading" class="status">加载中...</div>
     <div v-else-if="error" class="status error">{{ error }}</div>
+    <div v-else-if="!content.trim()" class="status">这篇笔记正在整理中，稍后更新。</div>
     <article v-else class="markdown-content" v-html="content"></article>
   </div>
 </template>
@@ -35,7 +36,7 @@ watch(() => route.params.title, loadPost)
 
 <style scoped>
 .blog-post-page {
-  background-color: #000;
+  background-color: transparent;
   color: white;
   min-height: calc(100vh - 120px);
   display: flex;
@@ -61,16 +62,16 @@ watch(() => route.params.title, loadPost)
   line-height: 1.8;
   font-size: 1rem;
   padding: 24px;
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: var(--surface);
   border-radius: 12px;
-  border: 1px solid #333;
+  border: 1px solid var(--border);
 }
 
 .markdown-content :deep(h1),
 .markdown-content :deep(h2),
 .markdown-content :deep(h3),
 .markdown-content :deep(h4) {
-  color: #42b983;
+  color: var(--accent);
   margin-top: 24px;
   margin-bottom: 12px;
 }
@@ -81,7 +82,7 @@ watch(() => route.params.title, loadPost)
 }
 
 .markdown-content :deep(a) {
-  color: #42b983;
+  color: var(--accent);
   text-decoration: none;
 }
 
@@ -117,7 +118,7 @@ watch(() => route.params.title, loadPost)
 }
 
 .markdown-content :deep(blockquote) {
-  border-left: 3px solid #42b983;
+  border-left: 3px solid var(--accent);
   padding-left: 14px;
   margin: 14px 0;
   color: #aaa;
@@ -137,7 +138,7 @@ watch(() => route.params.title, loadPost)
 }
 
 .markdown-content :deep(th) {
-  background-color: rgba(66, 185, 131, 0.15);
-  color: #42b983;
+  background-color: rgba(128, 223, 255, 0.12);
+  color: var(--accent);
 }
 </style>

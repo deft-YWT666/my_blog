@@ -1,5 +1,11 @@
 <template>
   <div id="app">
+    <div class="site-scene" aria-hidden="true">
+      <div class="scene-glow scene-glow-blue"></div>
+      <div class="scene-glow scene-glow-violet"></div>
+      <div class="scene-grid"></div>
+      <div class="scene-stars"></div>
+    </div>
     <Header />
     <div v-if="showBack" class="back-bar">
       <button class="back-btn" @click="goBack">← 返回</button>
@@ -7,7 +13,11 @@
     <!-- 主要内容区域，包含路由视图和侧边栏 -->
     <div class="container">
       <!-- 路由匹配到的组件将渲染在这里 -->
-      <router-view class="main-content" />
+      <router-view v-slot="{ Component }">
+        <Transition name="page" mode="out-in">
+          <component :is="Component" :key="route.path" class="main-content" />
+        </Transition>
+      </router-view>
     </div>
     <Footer />
   </div>
@@ -19,6 +29,7 @@ import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
 import { useRoute, useRouter } from 'vue-router'
 import { computed } from 'vue'
+import './theme.css'
 
 const route = useRoute()
 const router = useRouter()
@@ -29,24 +40,25 @@ const goBack = () => router.back()
 <style>
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
 }
 
 #app {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  isolation: isolate;
 }
 
 .back-bar {
-  background-color: #000;
+  background-color: transparent;
   padding: 10px 40px 0;
 }
 
 .back-btn {
   background: transparent;
-  border: 1px solid #42b983;
-  color: #42b983;
+  border: 1px solid var(--border);
+  color: var(--accent);
   padding: 6px 16px;
   border-radius: 20px;
   cursor: pointer;
@@ -55,14 +67,15 @@ body {
 }
 
 .back-btn:hover {
-  background: #42b983;
-  color: #000;
+  background: var(--surface-hover);
+  color: #fff;
 }
 
 .container {
   display: flex;
   flex: 1;
   width: 100%;
+  min-width: 0;
   margin: auto;
 }
 

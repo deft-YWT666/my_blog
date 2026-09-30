@@ -20,7 +20,7 @@
 
 <style scoped>
 .contact-page {
-  background-color: #000;
+  background-color: transparent;
   color: white;
   min-height: calc(100vh - 120px);
   display: flex;
@@ -37,7 +37,7 @@
 
 .page-header h1 {
   font-size: 2.5rem;
-  color: #42b983;
+  color: var(--accent);
 }
 
 .contact-section {
@@ -49,10 +49,10 @@
 }
 
 .contact-card {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: var(--surface);
   border-radius: 10px;
   padding: 24px;
-  border: 1px solid #333;
+  border: 1px solid var(--border);
 }
 
 .contact-card p {

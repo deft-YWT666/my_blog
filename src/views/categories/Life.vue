@@ -23,7 +23,7 @@ onMounted(async () => {
 
 <style scoped>
 .posts-page {
-  background-color: #000;
+  background-color: transparent;
   color: white;
   min-height: 100vh;
   display: flex;
@@ -40,7 +40,7 @@ onMounted(async () => {
 
 .page-header h1 {
   font-size: 2.5rem;
-  color: #42b983;
+  color: var(--accent);
 }
 
 .markdown-content {
@@ -49,7 +49,7 @@ onMounted(async () => {
   line-height: 1.6;
   font-size: 1rem;
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: var(--surface);
   border-radius: 10px;
 }
 
@@ -63,17 +63,17 @@ onMounted(async () => {
 
 ::v-deep .markdown-content p:hover {
   transform: scale(1.05); /* 放大比例可调 */
-  color: #42b983; /* 悬停时的文字颜色 */
+  color: var(--accent); /* 悬停时的文字颜色 */
 }
 
 .markdown-content h1,
 .markdown-content h2,
 .markdown-content h3 {
-  color: #42b983;
+  color: var(--accent);
 }
 
 .markdown-content a {
-  color: #42b983;
+  color: var(--accent);
   text-decoration: none;
 }
 

@@ -6,11 +6,12 @@
 
 <style scoped>
 .footer {
-  background-color: #1a1a1a;
-  color: #aaa;
+  background-color: rgba(9, 15, 28, 0.8);
+  color: var(--muted);
   text-align: center;
-  padding: 15px 0;
-  border-top: 1px solid #333;
+  padding: 18px 20px;
+  line-height: 1.7;
+  border-top: 1px solid var(--border);
   font-size: 0.9rem;
 }
 </style>

@@ -10,13 +10,14 @@
       <div v-else-if="error" class="status error">{{ error }}</div>
       <div v-else class="blog-cards">
         <router-link
-          v-for="blog in blogs"
+          v-for="(blog, index) in blogs"
           :key="blog.file"
           :to="`/blogs/${encodeURIComponent(blog.title)}`"
           class="blog-card"
         >
+          <span class="blog-number" aria-hidden="true">{{ String(index + 1).padStart(2, '0') }}</span>
           <h3>{{ blog.title }}</h3>
-          <span class="arrow">→</span>
+          <span class="blog-read">阅读全文 <span class="arrow" aria-hidden="true">↗</span></span>
         </router-link>
       </div>
     </section>
@@ -46,7 +47,7 @@ onMounted(async () => {
 
 <style scoped>
 .blog-list-page {
-  background-color: #000;
+  background-color: transparent;
   color: white;
   min-height: calc(100vh - 120px);
   display: flex;
@@ -62,7 +63,7 @@ onMounted(async () => {
 
 .page-header h1 {
   font-size: 2.5rem;
-  color: #42b983;
+  color: var(--accent);
   margin-bottom: 8px;
 }
 
@@ -72,7 +73,7 @@ onMounted(async () => {
 }
 
 .blogs-section {
-  max-width: 800px;
+  max-width: 1040px;
   width: 100%;
 }
 
@@ -88,37 +89,43 @@ onMounted(async () => {
 }
 
 .blog-cards {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
 }
 
 .blog-card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid #333;
-  border-radius: 10px;
-  padding: 16px 20px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 20px;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
   text-decoration: none;
   color: inherit;
-  transition: transform 0.2s ease, background-color 0.2s ease;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .blog-card:hover {
-  background-color: rgba(255, 255, 255, 0.08);
-  transform: translateX(5px);
+  border-color: #91caff70;
+  box-shadow: 0 12px 32px #0003, 0 0 24px #5174c217;
+  transform: translateY(-4px);
 }
 
 .blog-card h3 {
+  grid-column: 1 / -1;
   margin: 0;
-  font-size: 1.05rem;
+  font-size: 1.2rem;
   color: #fff;
 }
 
+.blog-number { font-family: Consolas, monospace; color: var(--violet); font-size: 0.85rem; letter-spacing: 0.12em; }
+.blog-read { grid-column: 1 / -1; color: var(--muted); font-size: 0.8rem; display: flex; align-items: center; justify-content: space-between; }
+@media (max-width: 600px) { .blog-cards { grid-template-columns: minmax(0, 1fr); gap: 14px; } }
+
 .arrow {
-  color: #42b983;
+  color: var(--accent);
   font-size: 1.2rem;
 }
 </style>

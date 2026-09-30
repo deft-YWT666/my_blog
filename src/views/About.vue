@@ -126,11 +126,12 @@ const handleAudioPlay = (audio) => {
 onMounted(() => {
   // 生活照
   const ywtMods = import.meta.glob('../assets/ywt/*.{jpg,jpeg,png,gif,webp,bmp}', { eager: true })
-  ywtFiles.value = Object.values(ywtMods).map(m => m.default)
+  const sortFiles = (entries) => entries.sort(([a], [b]) => a.localeCompare(b, undefined, { numeric: true }))
+  ywtFiles.value = sortFiles(Object.entries(ywtMods)).map(([, mod]) => mod.default)
 
   // 朋友们
   const friendsMods = import.meta.glob('../assets/friends/*.{jpg,jpeg,png,gif,webp,bmp,mp4,webm,mov}', { eager: true })
-  friendsFiles.value = Object.entries(friendsMods).map(([path, mod]) => ({
+  friendsFiles.value = sortFiles(Object.entries(friendsMods)).map(([path, mod]) => ({
     src: mod.default,
     type: /\.(mp4|webm|mov)$/i.test(path) ? 'video' : 'image'
   }))
@@ -157,7 +158,7 @@ onMounted(() => {
 
 <style scoped>
 .about-page {
-  background-color: #000;
+  background-color: transparent;
   color: white;
   min-height: calc(100vh - 120px);
   display: flex;
@@ -173,7 +174,7 @@ onMounted(() => {
 
 .page-header h1 {
   font-size: 2.5rem;
-  color: #42b983;
+  color: var(--accent);
 }
 
 .content-section {
@@ -185,15 +186,15 @@ onMounted(() => {
 }
 
 .card {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: var(--surface);
   padding: 24px;
   border-radius: 12px;
-  border: 1px solid #333;
+  border: 1px solid var(--border);
 }
 
 .card h2 {
   margin-top: 0;
-  color: #42b983;
+  color: var(--accent);
   font-size: 1.4rem;
   margin-bottom: 18px;
   border-bottom: 1px solid #333;
@@ -223,7 +224,7 @@ onMounted(() => {
   cursor: zoom-in;
   min-width: 0;
 }
-.photo-button:focus-visible { outline: 2px solid #42b983; outline-offset: 4px; }
+.photo-button:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 .photo-button img { display: block; }
 .photo-viewer {
   position: fixed;
@@ -257,7 +258,7 @@ onMounted(() => {
   font-size: 30px;
   cursor: pointer;
 }
-.viewer-button:focus-visible { outline: 2px solid #42b983; outline-offset: 3px; }
+.viewer-button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .viewer-close { top: 16px; right: 16px; }
 .viewer-prev { left: 8px; top: calc(50% - 22px); }
 .viewer-next { right: 8px; top: calc(50% - 22px); }
@@ -271,7 +272,7 @@ onMounted(() => {
   object-position: top center;
   border-radius: 10px;
   transition: transform 0.3s ease;
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: var(--surface);
 }
 
 .media-grid img:hover,

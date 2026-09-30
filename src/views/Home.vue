@@ -34,7 +34,7 @@ import avatar from '../assets/avatar.jpg'
   box-sizing: border-box;
   min-height: calc(100svh - 140px);
   padding: 72px 40px;
-  background: radial-gradient(ellipse at 85% 45%, #151918 0%, #080a09 42%, #000 75%);
+  background: transparent;
   color: #f5f5f5;
 }
 
@@ -51,10 +51,11 @@ import avatar from '../assets/avatar.jpg'
 .portrait {
   grid-area: portrait;
   padding: 10px;
-  border: 1px solid #343936;
+  border: 1px solid #8ab6e658;
   border-radius: 32px;
-  background: #111513;
-  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.35);
+  background: linear-gradient(140deg, #172e4a, #312642);
+  box-shadow: 0 24px 64px #0006, 0 0 70px #5380d51a;
+  animation: portrait-float 7s ease-in-out infinite;
   transform: rotate(2deg);
 }
 
@@ -70,6 +71,10 @@ import avatar from '../assets/avatar.jpg'
 .hero-content { grid-area: content; min-width: 0; }
 
 .name {
+  background: linear-gradient(110deg, #fff 20%, #ace7ff 65%, #c6b3ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
   margin: 0 0 24px;
   font-size: clamp(2.8rem, 5vw, 4.5rem);
   font-weight: 700;
@@ -79,7 +84,7 @@ import avatar from '../assets/avatar.jpg'
 
 .intro {
   margin: 0;
-  color: #afb8b2;
+  color: var(--muted);
   font-size: clamp(1rem, 1.6vw, 1.2rem);
   line-height: 1.8;
 }
@@ -98,31 +103,33 @@ import avatar from '../assets/avatar.jpg'
   min-height: 48px;
   box-sizing: border-box;
   padding: 12px 24px;
-  border: 1px solid #414a45;
+  border: 1px solid var(--border);
   border-radius: 10px;
-  color: #e3e9e5;
+  color: #e3edff;
   background: rgba(255, 255, 255, 0.025);
   font-size: 0.95rem;
   text-decoration: none;
   transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
 }
 
-.btn-primary { background: #42b983; border-color: #42b983; color: #071d13; font-weight: 600; }
-.btn:hover { border-color: #72cea3; background: #1b3025; transform: translateY(-2px); }
-.btn-primary:hover { background: #72cea3; }
-.btn:focus-visible { outline: 2px solid #92dfb9; outline-offset: 4px; }
+.btn-primary { background: linear-gradient(120deg, #2378a8, #6c56b2); border-color: #8bbce66b; color: #fff; font-weight: 600; box-shadow: 0 6px 24px #418acd26; }
+.btn:hover { border-color: #9ddfff; background: #253854; transform: translateY(-3px); box-shadow: 0 8px 26px #468ac226; }
+.btn-primary:hover { background: linear-gradient(120deg, #3293c6, #856acf); }
+.btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 
 .quick-info {
   display: flex;
   flex-wrap: wrap;
   gap: 12px 24px;
   padding-top: 24px;
-  border-top: 1px solid #2b322e;
-  color: #939e97;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
   font-size: 0.9rem;
   line-height: 1.6;
 }
 .quick-info span { overflow-wrap: anywhere; }
+
+@keyframes portrait-float { 0%, 100% { transform: translateY(0) rotate(2deg); } 50% { transform: translateY(-10px) rotate(0deg); } }
 
 @media (max-width: 760px) {
   .home { padding: 44px 24px 52px; }
@@ -135,7 +142,11 @@ import avatar from '../assets/avatar.jpg'
   }
   .portrait { width: min(54vw, 230px); padding: 7px; justify-self: center; border-radius: 24px; }
   .avatar { border-radius: 17px; }
-  .name { margin-bottom: 16px; font-size: 2.7rem; }
+  .name {
+  background: linear-gradient(110deg, #fff 20%, #ace7ff 65%, #c6b3ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent; margin-bottom: 16px; font-size: 2.7rem; }
   .button-group { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 28px auto; gap: 10px; max-width: 360px; }
   .btn { padding: 11px 18px; }
   .quick-info { justify-content: center; gap: 10px 20px; padding-top: 20px; }

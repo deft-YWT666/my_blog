@@ -1,15 +1,30 @@
 import { marked } from 'marked'; // 注意这里不是 import * as marked
 
 // 可选：引入高亮插件（如果你需要）
-import hljs from 'highlight.js';
+import hljs from 'highlight.js/lib/core';
+import cpp from 'highlight.js/lib/languages/cpp';
+import python from 'highlight.js/lib/languages/python';
+import javascript from 'highlight.js/lib/languages/javascript';
+import json from 'highlight.js/lib/languages/json';
+import bash from 'highlight.js/lib/languages/bash';
+import plaintext from 'highlight.js/lib/languages/plaintext';
 
-// 设置 marked 的选项（可选）
-marked.setOptions({
-  highlight: (code, lang) => {
-    const language = hljs.getLanguage(lang) ? lang : 'plaintext';
-    return hljs.highlight(code, { language }).value;
+hljs.registerLanguage('cpp', cpp);
+hljs.registerLanguage('python', python);
+hljs.registerLanguage('javascript', javascript);
+hljs.registerLanguage('json', json);
+hljs.registerLanguage('bash', bash);
+hljs.registerLanguage('plaintext', plaintext);
+
+marked.use({
+  renderer: {
+    code({ text, lang }) {
+      const requestedLanguage = (lang || '').split(/\s+/)[0];
+      const language = hljs.getLanguage(requestedLanguage) ? requestedLanguage : 'plaintext';
+      const highlighted = hljs.highlight(text, { language }).value;
+      return `<pre><code class="hljs language-${language}">${highlighted}</code></pre>`;
+    },
   },
-  langPrefix: 'hljs language-', // 如果使用 highlight.js 样式
 });
 
 export async function loadMarkdown(path) {

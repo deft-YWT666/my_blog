@@ -26,7 +26,7 @@ import { awards } from '../data/experience.js'
 
 <style scoped>
 .awards-page {
-  background-color: #000;
+  background-color: transparent;
   color: white;
   min-height: calc(100vh - 120px);
   display: flex;
@@ -42,7 +42,7 @@ import { awards } from '../data/experience.js'
 
 .page-header h1 {
   font-size: 2.5rem;
-  color: #42b983;
+  color: var(--accent);
   margin-bottom: 8px;
 }
 
@@ -63,8 +63,8 @@ import { awards } from '../data/experience.js'
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid #333;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 10px;
   padding: 18px 24px;
   transition: transform 0.3s ease, background-color 0.3s ease;
@@ -90,8 +90,8 @@ import { awards } from '../data/experience.js'
 }
 
 .national {
-  background-color: rgba(66, 185, 131, 0.15);
-  color: #42b983;
+  background-color: rgba(128, 223, 255, 0.12);
+  color: var(--accent);
 }
 
 .provincial {
@@ -107,7 +107,7 @@ import { awards } from '../data/experience.js'
   display: block;
   font-size: 1.2rem;
   font-weight: bold;
-  color: #42b983;
+  color: var(--accent);
   margin-bottom: 4px;
 }
 

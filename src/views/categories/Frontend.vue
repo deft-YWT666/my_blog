@@ -23,7 +23,7 @@
   
   <style scoped>
   .posts-page {
-    background-color: #000;
+    background-color: transparent;
     color: white;
     min-height: 100vh;
     display: flex;
@@ -40,7 +40,7 @@
   
   .page-header h1 {
     font-size: 2.5rem;
-    color: #42b983;
+    color: var(--accent);
   }
   
   .markdown-content {
@@ -49,18 +49,18 @@
     line-height: 1.6;
     font-size: 1rem;
     padding: 20px;
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: var(--surface);
     border-radius: 10px;
   }
   
   .markdown-content h1,
   .markdown-content h2,
   .markdown-content h3 {
-    color: #42b983;
+    color: var(--accent);
   }
   
   .markdown-content a {
-    color: #42b983;
+    color: var(--accent);
     text-decoration: none;
   }
   

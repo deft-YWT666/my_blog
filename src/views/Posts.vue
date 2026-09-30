@@ -71,7 +71,7 @@
 
 <style scoped>
 .research-page {
-  background-color: #000;
+  background-color: transparent;
   color: white;
   min-height: calc(100vh - 120px);
   display: flex;
@@ -87,7 +87,7 @@
 
 .page-header h1 {
   font-size: 2.5rem;
-  color: #42b983;
+  color: var(--accent);
   margin-bottom: 8px;
 }
 
@@ -105,8 +105,8 @@
 }
 
 .paper-card {
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid #333;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 12px;
   padding: 24px;
   transition: transform 0.3s ease, background-color 0.3s ease;
@@ -142,8 +142,8 @@
 }
 
 .first-author {
-  background-color: rgba(66, 185, 131, 0.2);
-  color: #42b983;
+  background-color: rgba(128, 223, 255, 0.15);
+  color: var(--accent);
 }
 
 .co-author {
@@ -153,7 +153,7 @@
 
 .journal {
   margin: 0 0 6px 0;
-  color: #42b983;
+  color: var(--accent);
   font-size: 0.95rem;
 }
 

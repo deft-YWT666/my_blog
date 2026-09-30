@@ -126,7 +126,7 @@ import { projects, awards } from '../data/experience.js'
 
 <style scoped>
 .undergraduate-page {
-  background-color: #000;
+  background-color: transparent;
   color: white;
   min-height: calc(100vh - 120px);
   display: flex;
@@ -151,7 +151,7 @@ import { projects, awards } from '../data/experience.js'
 
 .page-header h1 {
   font-size: 2.2rem;
-  color: #42b983;
+  color: var(--accent);
   margin-bottom: 8px;
 }
 
@@ -169,8 +169,8 @@ import { projects, awards } from '../data/experience.js'
 }
 
 .paper-card {
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid #333;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 12px;
   padding: 20px;
   transition: transform 0.3s ease, background-color 0.3s ease;
@@ -206,8 +206,8 @@ import { projects, awards } from '../data/experience.js'
 }
 
 .first-author {
-  background-color: rgba(66, 185, 131, 0.2);
-  color: #42b983;
+  background-color: rgba(128, 223, 255, 0.15);
+  color: var(--accent);
 }
 
 .co-author {
@@ -217,7 +217,7 @@ import { projects, awards } from '../data/experience.js'
 
 .journal {
   margin: 0 0 6px 0;
-  color: #42b983;
+  color: var(--accent);
   font-size: 0.9rem;
 }
 
@@ -243,8 +243,8 @@ import { projects, awards } from '../data/experience.js'
 }
 
 .project-card {
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid #333;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 12px;
   padding: 20px;
   transition: transform 0.3s ease, background-color 0.3s ease;
@@ -308,8 +308,8 @@ import { projects, awards } from '../data/experience.js'
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid #333;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 10px;
   padding: 16px 20px;
   transition: transform 0.3s ease, background-color 0.3s ease;
@@ -335,8 +335,8 @@ import { projects, awards } from '../data/experience.js'
 }
 
 .national {
-  background-color: rgba(66, 185, 131, 0.15);
-  color: #42b983;
+  background-color: rgba(128, 223, 255, 0.12);
+  color: var(--accent);
 }
 
 .provincial {
@@ -352,7 +352,7 @@ import { projects, awards } from '../data/experience.js'
   display: block;
   font-size: 1.1rem;
   font-weight: bold;
-  color: #42b983;
+  color: var(--accent);
   margin-bottom: 2px;
 }
 
