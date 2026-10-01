@@ -6,7 +6,7 @@
       </div>
       <div class="hero-content">
         <h1 id="home-name" class="name">姚伟涛</h1>
-        <p class="intro">一个热爱技术的软件工程专业学生</p>
+        <p class="intro"><TypewriterText text="一个热爱技术的软件工程专业学生" /></p>
         <div class="button-group">
           <router-link to="/about" class="btn">关于我</router-link>
           <router-link to="/undergraduate" class="btn">本科四年</router-link>
@@ -14,8 +14,8 @@
           <router-link to="/blogs" class="btn">我的博客</router-link>
         </div>
         <div class="quick-info">
-          <span>📧 18915610140@163.com</span>
-          <span>📱 18915610140</span>
+          <span>💬 QQ：3134069306</span>
+          <a href="mailto:yaoweitao05@gmail.com">✉️ 邮箱：yaoweitao05@gmail.com</a>
         </div>
       </div>
     </section>
@@ -24,6 +24,7 @@
 
 <script setup>
 import avatar from '../assets/avatar.jpg'
+import TypewriterText from '../components/TypewriterText.vue'
 </script>
 
 <style scoped>
@@ -40,7 +41,7 @@ import avatar from '../assets/avatar.jpg'
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(240px, 340px);
+  grid-template-columns: minmax(0, 1fr) minmax(230px, 310px);
   grid-template-areas: "content portrait";
   align-items: center;
   gap: clamp(40px, 7vw, 100px);
@@ -76,7 +77,7 @@ import avatar from '../assets/avatar.jpg'
   -webkit-background-clip: text;
   color: transparent;
   margin: 0 0 24px;
-  font-size: clamp(2.8rem, 5vw, 4.5rem);
+  font-size: clamp(2.6rem, 4.5vw, 4.1rem);
   font-weight: 700;
   line-height: 1.15;
   letter-spacing: 0.08em;
@@ -125,7 +126,9 @@ import avatar from '../assets/avatar.jpg'
   font-size: 0.9rem;
   line-height: 1.6;
 }
-.quick-info span { overflow-wrap: anywhere; }
+.quick-info :is(span, a) { overflow-wrap: anywhere; }
+.quick-info a { color: inherit; text-decoration: none; }
+.quick-info a:hover { color: var(--accent); }
 
 @keyframes portrait-float { 0%, 100% { transform: translateY(0) rotate(2deg); } 50% { transform: translateY(-10px) rotate(0deg); } }
 
@@ -138,13 +141,13 @@ import avatar from '../assets/avatar.jpg'
     max-width: 520px;
     text-align: center;
   }
-  .portrait { width: min(54vw, 230px); padding: 7px; justify-self: center; border-radius: 24px; }
+  .portrait { width: min(50vw, 210px); padding: 7px; justify-self: center; border-radius: 24px; }
   .avatar { border-radius: 17px; }
   .name {
   background: linear-gradient(110deg, #fff 20%, #ace7ff 65%, #c6b3ff);
   background-clip: text;
   -webkit-background-clip: text;
-  color: transparent; margin-bottom: 16px; font-size: 2.7rem; }
+  color: transparent; margin-bottom: 16px; font-size: 2.45rem; }
   .button-group { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 28px auto; gap: 10px; max-width: 360px; }
   .btn { padding: 11px 18px; }
   .quick-info { justify-content: center; gap: 10px 20px; padding-top: 20px; }

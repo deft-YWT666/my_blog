@@ -6,13 +6,14 @@
 
     <section class="contact-section">
       <div class="contact-card">
-        <p><span class="icon">📱</span> <strong>电话：</strong> 18915610140</p>
-        <p><span class="icon">✉️</span> <strong>邮箱：</strong> 18915610140@163.com</p>
-        <p><span class="icon">🎓</span> <strong>学校：</strong> 苏州大学 · 计算机科学与技术学院</p>
+        <p><span class="icon">💬</span> <strong>QQ：</strong> 3134069306</p>
+        <p><span class="icon">✉️</span> <strong>邮箱：</strong> <a href="mailto:yaoweitao05@gmail.com">yaoweitao05@gmail.com</a></p>
+        <p><span class="icon">🎓</span> <strong>学校：</strong> 苏州大学</p>
+        <p><span class="icon">🏫</span> <strong>学院：</strong> 计算机科学与技术学院</p>
       </div>
 
       <div class="contact-note">
-        <p>欢迎通过邮件或电话与我联系，期待进一步的交流与合作 😊</p>
+        <p>欢迎通过邮件或 QQ 与我联系，期待进一步的交流与合作 😊</p>
       </div>
     </section>
   </div>
@@ -58,7 +59,12 @@
 .contact-card p {
   margin: 12px 0;
   font-size: 1.1rem;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
 }
+
+.contact-card a { color: var(--accent); text-decoration: none; }
+.contact-card a:hover { text-decoration: underline; }
 
 .icon {
   margin-right: 10px;

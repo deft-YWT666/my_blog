@@ -20,16 +20,26 @@ body { background: var(--page-bg); color: var(--text); }
 .scene-glow-blue { top: -42%; left: -15%; background: radial-gradient(circle, #17487a80, #0c244d33 45%, transparent 70%); animation: drift-blue 25s ease-in-out infinite alternate; }
 .scene-glow-violet { right: -22%; top: 4%; background: radial-gradient(circle, #51408475, #34215230 45%, transparent 70%); animation: drift-violet 30s ease-in-out infinite alternate; }
 .scene-grid { position: absolute; inset: 0; background-image: linear-gradient(#89baff0b 1px, transparent 1px), linear-gradient(90deg, #89baff0b 1px, transparent 1px); background-size: 72px 72px; mask-image: linear-gradient(black, #0008 45%, transparent 90%); }
-.scene-stars { position: absolute; inset: 0; opacity: 0.4; background-image: radial-gradient(circle at 13% 27%, #a3d9ff 0 1px, transparent 1.6px), radial-gradient(circle at 73% 18%, #d3c7ff 0 1px, transparent 1.6px), radial-gradient(circle at 87% 64%, #a3d9ff 0 1px, transparent 1.6px), radial-gradient(circle at 32% 71%, #b2a1ff 0 1px, transparent 1.6px); background-size: 700px 650px; }
+.scene-stars { position: absolute; inset: 0; opacity: 0.4; background-image: radial-gradient(circle at 13% 27%, #a3d9ff 0 1px, transparent 1.6px), radial-gradient(circle at 73% 18%, #d3c7ff 0 1px, transparent 1.6px), radial-gradient(circle at 87% 64%, #a3d9ff 0 1px, transparent 1.6px), radial-gradient(circle at 32% 71%, #b2a1ff 0 1px, transparent 1.6px); background-size: 700px 650px; animation: star-shimmer 6s ease-in-out infinite alternate; }
+.scene-particles { position: absolute; inset: 0; }
+.scene-particle { position: absolute; left: var(--x); top: var(--y); width: var(--size); height: var(--size); border-radius: 50%; background: #b7eaff; box-shadow: 0 0 14px 3px #70bcff55; animation: particle-drift var(--duration) ease-in-out var(--delay) infinite alternate; }
+.scene-particle:nth-child(even) { background: #c5b9ff; box-shadow: 0 0 14px 3px #a58aff44; }
+.scene-meteor { position: absolute; width: 130px; height: 1px; background: linear-gradient(90deg, transparent, #b9e6ff); opacity: 0; transform: rotate(32deg); animation: meteor-pass 16s linear infinite; }
+.scene-meteor-1 { left: 12%; top: 13%; animation-delay: -4s; }
+.scene-meteor-2 { left: 60%; top: 24%; width: 95px; animation-duration: 23s; animation-delay: -14s; }
 @keyframes drift-blue { to { transform: translate(12%, 14%) scale(1.12); } }
 @keyframes drift-violet { to { transform: translate(-14%, -7%) scale(1.08); } }
+@keyframes star-shimmer { to { opacity: 0.7; } }
+@keyframes particle-drift { from { opacity: 0.25; transform: translate3d(-12px, 25px, 0); } to { opacity: 0.8; transform: translate3d(20px, -100px, 0); } }
+@keyframes meteor-pass { 0%, 78%, 100% { opacity: 0; transform: translate3d(0, 0, 0) rotate(32deg); } 80% { opacity: 0.7; } 88% { opacity: 0; transform: translate3d(240px, 150px, 0) rotate(32deg); } }
 
-.scene-waves { position: absolute; bottom: 0; left: 0; width: 100%; height: clamp(180px, 32vh, 300px); overflow: hidden; }
+.scene-waves { position: absolute; bottom: 0; left: 0; width: 100%; height: clamp(260px, 46vh, 440px); overflow: hidden; }
 .wave-layer { position: absolute; inset: 0 auto 0 0; width: 200%; height: 100%; animation: wave-flow 14s linear infinite; }
 .wave-layer svg { display: block; width: 100%; height: 100%; }
-.wave-layer-1 { color: #4a82b7; opacity: 0.13; }
-.wave-layer-2 { color: #8b72c6; opacity: 0.11; top: 14px; animation-duration: 20s; animation-direction: reverse; animation-delay: -12s; }
-.wave-layer-3 { color: #62bddd; opacity: 0.09; top: 28px; animation-duration: 12s; animation-delay: -8s; }
+.wave-layer-1 { color: #497de0; opacity: 0.19; }
+.wave-layer-2 { color: #9974d9; opacity: 0.15; top: 25px; animation-duration: 20s; animation-direction: reverse; animation-delay: -12s; }
+.wave-layer-3 { color: #58c8e5; opacity: 0.13; top: 55px; animation-duration: 12s; animation-delay: -8s; }
+.wave-layer-4 { color: #4caeb8; opacity: 0.12; top: 85px; animation-duration: 26s; animation-direction: reverse; animation-delay: -6s; }
 @keyframes wave-flow { to { transform: translateX(-50%); } }
 
 .main-content { background: transparent; min-width: 0; }

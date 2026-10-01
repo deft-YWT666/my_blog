@@ -5,10 +5,15 @@
       <div class="scene-glow scene-glow-violet"></div>
       <div class="scene-grid"></div>
       <div class="scene-stars"></div>
+      <div class="scene-particles">
+        <span v-for="particle in particles" :key="particle.x" class="scene-particle" :style="{ '--x': `${particle.x}%`, '--y': `${particle.y}%`, '--size': `${particle.size}px`, '--duration': `${particle.duration}s`, '--delay': `${particle.delay}s` }"></span>
+      </div>
+      <div class="scene-meteor scene-meteor-1"></div>
+      <div class="scene-meteor scene-meteor-2"></div>
       <div class="scene-waves">
-        <div v-for="layer in 3" :key="layer" class="wave-layer" :class="`wave-layer-${layer}`">
-          <svg viewBox="0 0 2400 180" preserveAspectRatio="none" focusable="false">
-            <path d="M0 110 C200 65 400 155 600 110 C800 65 1000 155 1200 110 C1400 65 1600 155 1800 110 C2000 65 2200 155 2400 110 L2400 180 H0 Z" fill="currentColor" />
+        <div v-for="layer in 4" :key="layer" class="wave-layer" :class="`wave-layer-${layer}`">
+          <svg viewBox="0 0 2400 240" preserveAspectRatio="none" focusable="false">
+            <path d="M0 130 C200 35 400 225 600 130 C800 35 1000 225 1200 130 C1400 35 1600 225 1800 130 C2000 35 2200 225 2400 130 L2400 240 H0 Z" fill="currentColor" />
           </svg>
         </div>
       </div>
@@ -40,6 +45,16 @@ import './theme.css'
 
 const route = useRoute()
 const router = useRouter()
+const particles = [
+  { x: 8, y: 70, size: 4, duration: 14, delay: -3 },
+  { x: 19, y: 38, size: 3, duration: 18, delay: -10 },
+  { x: 35, y: 82, size: 5, duration: 16, delay: -7 },
+  { x: 47, y: 23, size: 3, duration: 20, delay: -13 },
+  { x: 61, y: 65, size: 4, duration: 15, delay: -5 },
+  { x: 74, y: 43, size: 5, duration: 19, delay: -12 },
+  { x: 86, y: 78, size: 3, duration: 17, delay: -8 },
+  { x: 94, y: 27, size: 4, duration: 22, delay: -16 },
+]
 const showBack = computed(() => route.path !== '/')
 const goBack = () => router.back()
 </script>
